@@ -1,0 +1,43 @@
+.login-wrapper {
+    margin: 20px;
+    border: 2px solid white;
+    padding: 2%;
+    /* border-radius: 45%; */
+}
+h1 {
+    text-align: center;
+}
+.status {
+    color: orange;
+}
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Full-width input fields */
+// input[type=text], input[type=password] {
+//   width: 100%;
+//   padding: 12px 20px;
+//   margin: 8px 0;
+//   display: inline-block;
+//   border: 1px solid #ccc;
+//   box-sizing: border-box;
+// }
+
+/* Set a style for all buttons */
+.loginbutton {
+  background-color: black;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  
+  border: 1px solid white;
+}
+button:hover {
+    background-color: yellow;
+    color: black;
+}

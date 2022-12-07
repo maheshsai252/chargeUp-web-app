@@ -1,0 +1,132 @@
+
+  
+  .styleCard {
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px #ccc;
+    color: #253b56;
+    margin: 12px 0px;
+    background-color: black;
+    
+  }
+  .event-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+    grid-gap: 10px;
+    align-items: center;
+    margin: 2%;
+    padding: 2%;
+  }
+  
+  .styleCard:hover{
+    transform: scale(1.1);
+    box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12), 0 8px 32px -8px hsla(0, 0%, 0%, 0.14), 0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
+  
+  }
+  
+  .styleDateLabel{
+    color:white;
+    font-weight: bold;
+  }
+  
+  
+  
+  .styleCardContent {
+     padding: 4px 16px 20px 16px; 
+  }
+  
+  .styleImage {
+    background-color: lightGray;
+    border-radius: 8px 8px 0 0;
+    max-height: 140px;
+    overflow: hidden;
+  }
+  
+  .styleCardTitle {
+    font-family: Avenir-Heavy;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin: 15px 0px 15px 0px;
+    color:gold;
+    /* background: linear-gradient(
+      110.78deg,
+      rgb(118, 230, 80) -1.13%,
+      rgb(249, 214, 73) 15.22%,
+      rgb(240, 142, 53) 32.09%,
+      rgb(236, 81, 87) 48.96%,
+      rgb(255, 24, 189) 67.94%,
+      rgb(26, 75, 255) 85.34%,
+      rgb(98, 216, 249) 99.57%
+    ); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;*/
+  }
+  
+  .styleLocationLabel {
+    color: white;
+    font-size: 14;
+    margin: 4px 0;
+    font-weight: bolder;
+  }
+  
+  .styleDescription {
+    font-size: 14;
+    margin: 8px 0 0 0;
+    color:white;
+    font-weight: bold;
+
+  }
+  a{
+    color:white;
+  }
+  /* .card_btn{
+    background-color: rgb(65, 7, 133);
+    height:50px;
+    color:white;
+    margin: 8px 0 0 0;
+    width:300px
+  } */
+  
+  .card_btn {
+    background-color: yellow; /* Blue background */
+    border: none; /* Remove borders */
+    border-radius: 50%;
+    color: black; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    margin:0 0 0 250px; 
+    /* float:right; */
+  }
+  
+  /* Darker background on mouse-over */
+  .card_btn:hover {
+    background-color: RoyalBlue;
+  
+  }
+  .unregister {
+    padding: 12px;
+    margin: 10;
+    margin-top: 25px;
+    border: 1px solid red;
+    // background-color: red;
+    color: white;
+    margin-left: 0px;
+  }
+  .pairingbutton {
+    padding: 12px;
+    margin: 10;
+    margin-top: 25px;
+    border: 1px solid gray;
+    // background-color: red;
+    color: white;
+    margin-left: 0px;
+  }
+  .unregister:hover {
+    background-color: red;
+    color: white;
+  }
+  .pairingbutton:hover {
+    background-color: gray;
+    color: yellow;
+  }

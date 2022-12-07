@@ -1,0 +1,138 @@
+body {
+    background-color: black;
+    height: 100%;
+    z-index: -1;
+}
+
+// footer {
+//   margin-top: -10;
+// }
+footer {
+    margin-top: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    z-index: -2;
+}
+label {
+  font-weight: bold;
+  margin-top: 20px;
+}
+.icon {
+    width: 20px;
+    height: 20px;
+}
+.splitView {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 30px;
+  }
+  .divider {
+    width: 5px;
+    height: 100%;
+    margin: 1rem;
+    border: 2px solid white;
+  }
+  .like:hover{
+    transform:scale(1.1);
+    /* background-color:black; */
+    /* color:white; */
+}
+.like{
+    transition: transform .5s
+}
+#clientheader{
+  /* color:white; */
+  font-family:cursive;
+  
+}
+.like {
+    margin: 10px;
+}
+.spacev {
+  display: flex;
+  
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.spacebtn {
+  display: flex;
+  
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.adjuster {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 3%;
+  // border: 1px solid yellow;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+.classin1 {
+  width: 30%;
+}
+.classin2 {
+  width: 70%;
+}
+@media only screen and (max-width: 480px) {
+  .adjuster {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .classin1 {
+    width: 100%;
+  }
+  .classin2 {
+    width: 100%;
+  }
+}
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fbc2eb;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
+  }
+
+  .classout {
+
+  }
+ .nav-button {
+    padding: 10px;
+    margin: 0px;
+    // border: 2px solid yellow;
+    border-radius: 20%;
+    margin-right: 10px;
+ }
+ .nav-search-button {
+  border-radius: 20%;
+  margin-right: 30px;
+  padding: 10px;
+    margin-left: 20px;
+    border: 2px solid white;
+    border-radius: 30%;
+ }
+ .nav-search-button:hover {
+  background-color: white;
+ }
+ .nav-item {
+  background-color: black;
+ }

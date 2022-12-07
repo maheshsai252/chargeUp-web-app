@@ -1,0 +1,98 @@
+label {
+    padding: 10px;
+}
+.autoComplete {
+    padding: 10px;
+    margin: 10px;
+}
+.basic-form {
+    margin: 20px;
+}
+.datePicker {
+    width: 70%;
+  }
+button, input[type="submit"] {
+    border: 2px solid yellow;
+    background-color: black;
+    color: white;
+    // margin: 20px;
+    // padding: 20px;
+    border-radius: 20px;
+    font-weight: bolder;
+}
+input[type="text"], input[type="file"] textarea {
+    border-radius: 25px;
+    border: solid 1px  yellow;
+    background: transparent;
+    padding: 10px 20px;
+    color: white;
+    width: 70%;
+}
+.desc-textarea {
+    height: 200px;
+
+}
+.spl-input {
+    border-radius: 25px;
+    border: solid 1px  yellow;
+    background: transparent;
+    padding: 10px 20px;
+    color: white;
+}
+textarea {
+    width: 80%;
+    border-radius: 25px;
+    border: solid 1px  yellow;
+    background: transparent;
+    padding: 10px 20px;
+    color: white;
+}
+.event-add-status {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    margin: 30px;
+}
+.alert-online {
+    color: orange;
+    font-weight: bold;
+}
+select {
+    width: 70%;
+}
+select option {
+    margin: 50px;
+  width: 70%;
+  background: yellow;
+  color: #000;
+}
+#submit-btn1{
+    border-radius: 5px;
+    border: solid 1px yellow;
+    background: transparent ;
+    // width: 100px;
+    // padding: 10px 20px;
+    color: white;
+    float: right;
+}
+.float-right {
+    float: right;
+    margin: 30px;
+}
+#submit-btn1:hover{
+    background-color: yellow;
+    color: black;
+}
+#btn-sm{
+    border-radius: 25px;
+    border: solid 1px yellow;
+    background: transparent ;
+    // width: 50px;
+    padding: 10px 20px;
+    color: white;
+    margin: 20px;
+}
+.stepcontainer {
+    display: flex;
+    flex-direction: column;
+}
