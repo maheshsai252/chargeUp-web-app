@@ -70,30 +70,30 @@ function App() {
       <Routes>
       {/* <PrivateRoute path="/viewEvent/" component={ViewEvent} /> */}
 
-      <Route path = "/" element = {<Home/>}></Route>
-      <Route path = "/login" element = {<Login />}></Route>
+      <Route  path = "/" element = {<Home/>}></Route>
+      <Route  path = "/login" element = {<Login />}></Route>
       {/* <Route exact path='/viewEvent' element={<PrivateRoute path='/viewEvent'/>}>
             <Route exact path='/viewEvent' element={<ViewEvent/>}/>
       </Route> */}
-      <Route path='/createEvent' element={<PrivateRoute path='/createEvent'/>}>
+      <Route  path='/createEvent' element={<PrivateRoute path='/createEvent'/>}>
             <Route exact path='/createEvent' element={<CreateEvent/>}/>
       </Route>
-      <Route path='/event/:nameTag' element={<EventDetailEntry />} >
+      <Route  path='/event/:nameTag' element={<EventDetailEntry />} >
 
       </Route>
-      <Route path='/register/:nameTag' element={<RegisterEvent />} >
+      <Route  path='/register/:nameTag' element={<RegisterEvent />} >
       </Route>
-      <Route path='/search/' element={<SearchEvent />} >
+      <Route  path='/search/' element={<SearchEvent />} >
       </Route>
-      <Route path='/myevents/' element={<MyEvents />} >
+      <Route exact path='/myevents/' element={<MyEvents />} >
       </Route>
-      <Route path='/sign-in/' element={<Login />} >
+      <Route exact path='/sign-in/' element={<Login />} >
       </Route>
-      <Route path='/sign-up/' element={<SignUp />} >
+      <Route exact path='/sign-up/' element={<SignUp />} >
       </Route>
-      <Route path='/profile/' element={<EditButton />} >
+      <Route  path='/profile/' element={<EditButton />} >
       </Route>
-      <Route path='/pairing/:nameTag' element={<PairingEntry />} >
+      <Route  path='/pairing/:nameTag' element={<PairingEntry />} >
       </Route>
       {/* <Route path="/viewEvent" element = {<ViewEvent />}></Route>  */}
       {/* <Route path = "/login" element = { <Login setToken={setToken} />}></Route> */}
