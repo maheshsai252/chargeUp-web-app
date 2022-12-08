@@ -12,7 +12,12 @@ export default function TrendingEvents() {
         const response = await axios.post('/api/events-popular',{
         });
         console.log(response,"gotten");
-      setEvents(response.data);
+        if(response.data.length > 10) {
+          setEvents(response.data.slice(1,11));
+        } else {
+          setEvents(response.data);
+        }
+      
       } catch (error) {
         console.log(error)
       }

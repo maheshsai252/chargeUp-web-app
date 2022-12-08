@@ -1,6 +1,7 @@
 import React from 'react'
 import { format } from 'date-fns'
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 function CardImage({event}) {
     const isImageURL = event.filenames[0];
@@ -26,6 +27,7 @@ function CardImage({event}) {
         console.log(response);
         getEvent()
     }
+    const navigate = useNavigate();
     const getEvent = async () => {
         const response = await axios.post('/api/events/',{
             
@@ -45,6 +47,9 @@ function CardImage({event}) {
         <div className="styleDateLabel"><i class="fa fa-calendar"></i> {event.startDate !== undefined ? format(new Date(event.startDate), 'yyyy/MM/dd kk:mm') : "undefined"}</div>
         <div>
             <button onClick={unregister} className='unregister'> Delete </button>
+        </div>
+        <div>
+            <button onClick={() => {navigate('/update/'+event.nameTag)}} className='unregister' style={{border: '1px solid yellow'}}> Update Event </button>
         </div>
         {/* <div>
             <button className='pairingbutton'><a style={{textDecoration: 'none'}} href={"/pairing/"+event.nameTag}>Pairing </a>  </button>

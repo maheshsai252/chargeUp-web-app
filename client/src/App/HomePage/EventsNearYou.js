@@ -21,8 +21,15 @@ export default function EventsNearYou() {
                     console.log("ilo")
                
                     console.log(response,"gotten");
-                    setData(response.data);
-                    setLoading(false);
+                    if(response.data.length > 10) {
+                        setData(response.data.slice(1,11));
+                   
+                        // setEvents(response.data.slice(1,11));
+                      } else {
+                        setData(response.data);
+                      }
+                      setLoading(false);
+
                 }
                 
               } catch (error) {
