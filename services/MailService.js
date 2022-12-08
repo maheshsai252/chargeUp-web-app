@@ -10,13 +10,13 @@ const transporter = nodemailer.createTransport({
     secure: true, // upgrades later with STARTTLS -- change this based on the PORT
 });
 
-exports.sendEmail = (from,to,subject,content) => {
+exports.sendEmail = (from,to,subject,content,html) => {
     const mailData = {
         from: from,
         to: to,
         subject: subject,
         text: content,
-        html: '<b>Hey there! </b><br> This is our first message sent with Nodemailer<br/>',
+        html: html,
     };
 
     transporter.sendMail(mailData, (error, info) => {

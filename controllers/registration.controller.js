@@ -2,6 +2,7 @@
 const db = require("../models");
 const Registration = db.registration;
 const {Event} = require('../models/event.model');
+const {sendEmail} = require('../services/MailService');
 
 const User = db.user;
 
@@ -29,6 +30,8 @@ exports.createRegistration = async (req, res) => {
   try {
     const registrationcreated = await registration.save();
     await Event.findByIdAndUpdate(event._id, { $inc: { available: -1 } })
+    sendEmail("maheshsai252@gmail.com",user.email,"Registration Successful !!","","'<b>Hi "+ user.name +"!!</b><br><br> Your Registration was succesful to "+ event.name +" !!<br/>")
+
     res.status(200).send({
       id: registrationcreated._id,
       name: registrationcreated.name,
@@ -154,7 +157,12 @@ exports.deleteRegistration = async (req, res) => {
       user: req.body.userid,
       event: req.body.eventid
     });
+    const user = await User.findOne({
+      _id: req.body.userid
+    })
     await Event.findByIdAndUpdate(req.body.eventid, { $inc: { available: 1 } })
+    sendEmail("maheshsai252@gmail.com",user.email,"Registration UnSuccessful !!","","'<b>Hi "+ user.name +"!!</b><br><br> Your Request to unregister was successfull !!<br/>")
+
     res.status(200).send({
       message: "Registarion deleted"
     });

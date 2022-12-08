@@ -3,7 +3,7 @@ import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom'
 // import Login from './App/Login/Login';
 import Home from './App/Home/Home';
 import Login from './App/Login/SignInUp';
-
+import Faq from './App/Home/faq';
 import {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {fetchUser} from './App/Login/LoginService';
@@ -111,6 +111,8 @@ function App() {
       </Route>
       
       <Route  path='/admin/manage/:nameTag' element={<AdminManageEvent />} >
+      </Route>
+      <Route  path='/faq' element={<Faq />} >
       </Route>
       {/* <Route path="/viewEvent" element = {<ViewEvent />}></Route>  */}
       {/* <Route path = "/login" element = { <Login setToken={setToken} />}></Route> */}

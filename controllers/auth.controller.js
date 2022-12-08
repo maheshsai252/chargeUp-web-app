@@ -26,6 +26,7 @@ exports.signup = async (req, res) => {
       email: usercreated.email,
       name: usercreated.name
     });
+    sendEmail("maheshsai252@gmail.com",usercreated.email,"Sign Up!!","","'<b>Hey "+ usercreated.name +"!!</b><br><br> Thanks for signing up to chargeUp !!<br/>")
   } catch (err) {
       res.status(500).send({ message: err });
       return;
@@ -82,7 +83,7 @@ exports.getAll = async (req,res) => {
     console.log(req.session, "session");
 
     var data = await User.find({});
-    sendEmail("maheshsai252@gmail.com","maheshsai252@gmail.com","test","test-test");
+    // sendEmail("maheshsai252@gmail.com","maheshsai252@gmail.com","test","test-test");
 
     res.send(data);
   } catch (err) {
