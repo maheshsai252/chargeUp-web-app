@@ -8,14 +8,16 @@ checkUserCanUpdateEvent = async (req, res, next) => {
       const user = await User.findOne({
         _id: req.body.userid
       });
+      
       if(user==null) {
         res.status(400).send({ message: "Failed! User doesn't exist" });
         return;
       }
       const event = await Event.findOne({
-        _id: req.body.id
+        _id: req.body.eventid
       });
-      if(event.createdBy != user) {
+      console.log(event.createdBy.toString(), user._id.toString(), event.createdBy !== user._id)
+      if(event.createdBy.toString() != user._id.toString()) {
         res.status(400).send({ message: "Failed! User dont have permission to update" });
           return;
       }

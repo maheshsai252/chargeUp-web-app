@@ -29,6 +29,11 @@ const Event = mongoose.model(
       default: 10,
       min: 0
     },
+    capacity: {
+      type: Number,
+      default: 10,
+      min: 0
+    },
     place: String,
     createdBy: { 
       type: Schema.Types.ObjectId, // here is the issue

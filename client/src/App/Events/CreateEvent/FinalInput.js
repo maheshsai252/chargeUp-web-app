@@ -3,23 +3,24 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import UploadImageToS3WithNativeSdk from '../../Media/UploadFile';
 
-export default function FinalInput({setCsteps, files,setSelectedFiles, name, setStatus, nameTag,setNameTag,nameTagError,setNameTagError, tags,setTags,tagError, setTagError}) {
+export default function FinalInput({place, setCsteps, files,setSelectedFiles, name, setStatus, nameTag,setNameTag,nameTagError,setNameTagError, tags,setTags,tagError, setTagError}) {
     useEffect(() => {
         if(nameTag.length === 0) {
             const name_array = name.split(' ');
             setNameTag(name_array.join("-"));
         }
+        console.log(place, "setting")
         
     },[name,setNameTag, nameTag])
     const handlePrevious = (e) => {
         e.preventDefault();
         console.log("prev");
         setCsteps([{
-            "name": "Input",
+            "name": "About",
             "completed": true
         }, 
         {
-            "name": "Verify",
+            "name": "More",
             "completed": true
         },
     {
@@ -31,6 +32,7 @@ export default function FinalInput({setCsteps, files,setSelectedFiles, name, set
     }
    
     const addTag = (e) => {
+        e.preventDefault();
         const tag = document.getElementById("tag").value;
         setStatus("");
         console.log("adding", tag)
@@ -52,7 +54,7 @@ export default function FinalInput({setCsteps, files,setSelectedFiles, name, set
             tag
         ]);
 
-
+        document.getElementById("tag").value = "";
     }
     const handleNameTag = async (e) => {
         e.preventDefault();
@@ -85,11 +87,11 @@ export default function FinalInput({setCsteps, files,setSelectedFiles, name, set
         </div>
         {tagError && <p style={{color: 'red'}}>{tagError}</p>}
 
-        <ul>
+        <div style={{overflow: 'scroll', marginTop: '20px', display: "flex", flexDirection: "row"}}>
             {tags.map((tag) => 
-                <li>{tag}</li>
+               <p style={{margin: '15px', padding: '10px',borderRadius: '20px', border: '2px solid yellow'}}>{tag}</p> 
             )}
-        </ul>
+        </div>
         <br/>
 
 
@@ -117,7 +119,7 @@ export default function FinalInput({setCsteps, files,setSelectedFiles, name, set
                 
                 return <div>
                 <img style={{width: '150px', height: '150px'}}src= {"https://chargeup.s3.amazonaws.com/"+file} alt='lol'/>
-                <p>{file}</p>
+                {/* <p>{file}</p> */}
                 </div>;
             })
         }

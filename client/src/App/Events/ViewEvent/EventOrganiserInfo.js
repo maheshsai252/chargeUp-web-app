@@ -9,9 +9,11 @@ import { format } from 'date-fns'
 import { useEffect } from 'react';
 import axios from 'axios';
 
+
 export default function EventOrganiserInfo({event}) {
     const style = {
-        display: 'inline-block'
+        display: 'inline-block',
+        margin : '15px'
     }
     useEffect(()=> {
         
@@ -32,18 +34,18 @@ export default function EventOrganiserInfo({event}) {
 const [user,setUser] = useState("");
   return (
     <div>
-        <div className="splitView">
+        <div className="spacev">
             
             <div className="col">
                 <img src={userImg} className="icon" alt="" />
                 <h6 style={style}>Mahesh</h6>
             </div>
-            <div className="divider"/>
+            {/* <div className="divider"/> */}
             <div className="col">
                 <img src={calendar} className="icon" alt="" />
                 <h6 style={style}>{format(new Date(event.startDate), 'yyyy/MM/dd kk:mm')}</h6>
             </div>
-            <div className="divider"/>
+            {/* <div className="divider"/> */}
             <div>
                 {/* <img src="../../resources/location.png" className="icon" alt="" /> */}
                 <h6 style={style}>{event.place.split(',')[0]}</h6>

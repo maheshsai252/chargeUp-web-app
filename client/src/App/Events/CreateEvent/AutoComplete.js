@@ -17,8 +17,9 @@ const AutoComplete = (props) => {
   );
   autoCompleteRef.current.addListener("place_changed", async function () {
    const place = await autoCompleteRef.current.getPlace();
-   console.log({ place });
+   console.log({ place },props.setPlace, "setting");
     props.setPlace(place);
+    console.log(props.place,"setting")
     props.setStatus("");
   });
  }, []);

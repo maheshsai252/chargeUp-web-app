@@ -86,7 +86,10 @@
     margin: 8px 0 0 0;
     width:300px
   } */
+  .btn_heart:hover {
+    background-color: yellow;
   
+  }
   .card_btn {
     background-color: yellow; /* Blue background */
     border: none; /* Remove borders */
@@ -95,7 +98,7 @@
     padding: 12px 16px; /* Some padding */
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
-    margin:0 0 0 250px; 
+    margin:0 0 0 200px; 
     /* float:right; */
   }
   

@@ -8,14 +8,15 @@ import NavBar from '../../Nav/NavBar';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import FinalInput from './FinalInput';
+import { useNavigate } from 'react-router';
 
 export default function CreateEvent() {
     const steps = [{
-        "name": "Input Basic",
+        "name": "About",
         "completed": true
     }, 
     {
-        "name": "Input Loc",
+        "name": "More",
         "completed": false
     }, 
     {
@@ -24,9 +25,9 @@ export default function CreateEvent() {
     }];
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("submitted");
+        // console.log("submitted",place,place.address_components,"setting");
         if(name.length === 0) {
-            setStatus("name cant be empty");
+            setStatus("name can't be empty");
             return;
         }
         if(summary.length === 0) {
@@ -34,14 +35,26 @@ export default function CreateEvent() {
             return;
         }
         if(description.length === 0) {
-            setStatus("name cant be empty");
+            setStatus("name can't be empty");
             return;
         }
+        
         if(startDate>=endDate) {
             setStatus("end date must be greater than start date");
             return;
         }
-        console.log(place);
+        if(capacity.length === 0 || !/^-?\d+$/.test(capacity)) {
+            setStatus("capacity is invalid");
+            return;
+        }
+        if(price.length === 0 || !/^-?\d+$/.test(price)) {
+            setStatus("price is invalid");
+            return;
+        }
+        if(files.length === 0) {
+            setStatus("Please add a image ");
+            return;
+        }
 
         
         try {
@@ -70,9 +83,11 @@ export default function CreateEvent() {
             "startDate": startDate,
             "endDate": endDate,
             "type": type,
+            "capacity": parseInt(capacity),
             "nameTag": nameTag,
             "userid": sessionStorage.getItem('userid'),
-            "files": files
+            "files": files,
+            "price": parseInt(price)
         }
         if(place===undefined) {
             event.place = "online"
@@ -81,26 +96,28 @@ export default function CreateEvent() {
             const ans =  place.address_components.reduce(function (a, b) {
                 return (a.short_name || a) + ", " + b.short_name}
             )
+            console.log("kdkd")
             event.place = place.name + "," + ans
             event.latitude= place.geometry.location.lat()
             event.longitude = place.geometry.location.lng()
         }
         
         
-        console.log(event,place, place===undefined, place.formatted_address === undefined,"final eve")
+        console.log(event,place, place===undefined, place,"final eve")
 
         
         const response = await createEvent(event);
         console.log(response);
         if(response["status"]===200) {
             setStatus(response.data["name"])
+            navigate('/event/'+response.data["nameTag"]);
         } else {
             setStatus(response.data["message"])
         }
         
     };
     const [csteps, setCsteps] = useState(steps);
-
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [startDate, setStartDate] = useState(new Date());
@@ -116,16 +133,21 @@ export default function CreateEvent() {
     const [files, setSelectedFiles] = useState([])
     const [summary, setSummary] = useState("")
     const [summaryError, setSummaryError] = useState("")
+    const [capacity, setCapacity] = useState("20");
+    const [price, setPrice] = useState("0");
+
   return (
     <div>
     <NavBar />
     <div className='adjuster classout' style={{display: 'flex',justifyContent:"space-around"}}>
     <Stepper style={{padding: '50px'}} steps={csteps}/>
     <div className='basic-form classin2'>
-        
+    <h2>Create Event</h2>
         <form onSubmit={handleSubmit}>
             {csteps[2].completed === true ? <FinalInput
+                place={place}
                 setCsteps={setCsteps} 
+                setStatus={setStatus}
                 nameTag={nameTag} setNameTag = {setNameTag} nameTagError={nameTagError} setNameTagError={setNameTagError} 
                 tags={tags} setTags={setTags} tagError={tagError} setTagError={setTagError} place= {place} setPlace={setPlace}
                 files={files} setSelectedFiles={setSelectedFiles}
@@ -140,7 +162,12 @@ export default function CreateEvent() {
             <div>
                 <CompletionInput 
                 name={name}
-
+                capacity = {capacity}
+                setCapacity = {setCapacity}
+                price={price}
+                setPrice={setPrice}
+                place={place}
+                setPlace = {setPlace}
                 setType={setType} 
                     setStatus={setStatus}
                     setCsteps={setCsteps}

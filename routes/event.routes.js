@@ -18,12 +18,12 @@ module.exports = (app) => {
     controller.createEvent
   );
 
-  app.put("/api/event/edit",  [
+  app.post("/api/event/update",  [
     verifyEventPermission.checkUserCanUpdateEvent
   ],
   controller.updateEvent);
   app.post("/api/events/checkNameTag", controller.checkNameTag);
-  app.get("/api/events", controller.getAllEvents);
+  app.post("/api/events", controller.getAllEvents);
 
   app.post("/api/events/search", controller.searchEvent);
   app.post("/api/event/filterByTags", controller.filterByTags);
@@ -31,9 +31,14 @@ module.exports = (app) => {
   app.post("/api/events-nearby/", controller.getNearbyEvents);
   app.post("/api/events-popularnearby/", controller.getNearbyTrendingEvents);
   app.post("/api/events-filterByCategory/", controller.filterEventsByCategory);
+  
+  app.post("/api/events-fetchByCategory/", controller.fetchEventsByCategory);
+  app.post("/api/events-created/", controller.fetchEventsCreated);
+  app.post('/api/likeEvent',controller.likeEvent);
   app.post("/api/events-filterByPrice/", controller.filterEventsByPrice);
   app.post("/api/events-fromOrganiser/", controller.filterEventsOfOrganiser);
   app.post("/api/pair-users/", controller.pairing);
+  app.post("/api/event/delete", controller.deleteEvent);
 
   // ToDo: 1. filter by categories, 2. filter by price 3. events by organiser 4. similar events like an event
 

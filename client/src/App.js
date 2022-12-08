@@ -25,6 +25,10 @@ import SignInForm from './App/Login/SignInForm';
 import SignUp from './App/Login/SignUp';
 import EditButton from './App/ProfilePage/profilepage';
 import PairingEntry from './App/Events/MyEvents/Pairing/PairingEntry';
+import Profile from './App/ProfilePage/profilepage';
+import CategoryEntry from './App/HomePage/Category/CategoryEntry';
+import AdminView from './App/Admin/AdminView';
+import UpdateEventEntry from './App/Events/Update Event/UpdateEventEntry';
 function setToken(userToken) {
   sessionStorage.setItem('token', JSON.stringify(userToken));
 }
@@ -43,6 +47,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     console.log("executing");
+    console.log(process.env.REACT_APP_DESCRIPTION, process.env.REACT_APP_ACCESSKEY, process.env.REACT_APP_SECRETKEY, "testing")
     // React advises to declare the async function directly inside useEffect
     async function getToken() {
       console.log(sessionStorage.getItem("userid"));
@@ -51,7 +56,8 @@ function App() {
       if(res["status"]===200 && res.data.length !== 0) {
         const user = {
           name: res.data[0].name,
-          email: res.data[0].email
+          email: res.data[0].email,
+          image: res.data[0].file
         }
         dispatch(ActionCreators.login(user));
       }
@@ -81,6 +87,9 @@ function App() {
       <Route  path='/event/:nameTag' element={<EventDetailEntry />} >
 
       </Route>
+      <Route  path='/update/:nameTag' element={<UpdateEventEntry />} >
+
+      </Route>
       <Route  path='/register/:nameTag' element={<RegisterEvent />} >
       </Route>
       <Route  path='/search/' element={<SearchEvent />} >
@@ -91,9 +100,13 @@ function App() {
       </Route>
       <Route exact path='/sign-up/' element={<SignUp />} >
       </Route>
-      <Route  path='/profile/' element={<EditButton />} >
+      <Route  path='/profile/' element={<Profile />} >
       </Route>
       <Route  path='/pairing/:nameTag' element={<PairingEntry />} >
+      </Route>
+      <Route  path='/category/:category' element={<CategoryEntry />} >
+      </Route>
+      <Route  path='/admin' element={<AdminView />} >
       </Route>
       {/* <Route path="/viewEvent" element = {<ViewEvent />}></Route>  */}
       {/* <Route path = "/login" element = { <Login setToken={setToken} />}></Route> */}

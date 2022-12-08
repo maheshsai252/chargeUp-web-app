@@ -18,7 +18,7 @@ module.exports = (app) => {
     controller.signup
   );
 
-  app.put("/api/user/edit",  [
+  app.post("/api/user/edit",  [
     verifySignUp.checkUpdate
   ],
   controller.updateUser);
@@ -28,8 +28,8 @@ module.exports = (app) => {
   
   //ToDO: Forgot password
 
-  app.get("/api/user/getAll", controller.getAll);
+  app.post("/api/user/getAll", controller.getAll);
   app.post("/api/user/", controller.get);
   app.post("/api/user/logout", controller.logOut);
-  app.delete("/api/user/delete", [verifySignUp.checkExist], controller.deleteUser);
+  app.post("/api/user/delete", [verifySignUp.checkExist], controller.deleteUser);
 };

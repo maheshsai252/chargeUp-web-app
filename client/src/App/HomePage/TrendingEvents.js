@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TrendingEventRow from './TrendingEventRow'
+import axios from 'axios'
+import EventGrid from '../Events/Cards/EventGrid';
 
 export default function TrendingEvents() {
+  const [events,setEvents] = useState([]);
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        console.log("ilo")
+        const response = await axios.post('/api/events-popular',{
+        });
+        console.log(response,"gotten");
+      setEvents(response.data);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetch();
+  },[])
   return (
     <div>
         <h2>Trending Events Near You</h2>
-        <TrendingEventRow />
+        <EventGrid events={events} />
     </div>
   )
 }

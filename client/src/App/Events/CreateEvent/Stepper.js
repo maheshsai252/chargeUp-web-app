@@ -21,9 +21,9 @@ export default function Stepper(props) {
                     </div>
                     <h4 className='stepTitle'>{step.name}</h4>
                 </div>
-                {(idx !== props.steps.length-1) ? 
+                 {(idx !== props.steps.length-1) ? 
                         <div className='questionNumberLine'> 
-                     </div>: <div></div> } 
+                     </div>: <div></div> }  
 
             </div>
         })}

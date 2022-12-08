@@ -5,20 +5,20 @@ import DatePicker from "react-datepicker";
 
 // import Autocomplete from "react-google-autocomplete";
 import AutoComplete from './AutoComplete';
-export default function CompletionInput({setType, place,startDate, setStartDate, endDate, setEndDate, setStatus, setCsteps, name, setPlace, files,setSelectedFiles}) {
+export default function CompletionInput({price,setPrice,capacity, setCapacity, setType, place,startDate, setStartDate, endDate, setEndDate, setStatus, setCsteps, name, setPlace, files,setSelectedFiles}) {
     
    
     const handlePrevious = () => {
         setCsteps([{
-            "name": "Input",
+            "name": "About",
             "completed": true
         }, 
         {
-            "name": "Verify",
+            "name": "More",
             "completed": false
         },
     {
-        "name": "Complete Details",
+        "name": "Complete",
         "completed": false
     
 
@@ -26,11 +26,11 @@ export default function CompletionInput({setType, place,startDate, setStartDate,
     }
     const handleNext = () => {
         setCsteps([{
-            "name": "Input",
+            "name": "About",
             "completed": true
         }, 
         {
-            "name": "Verify",
+            "name": "More",
             "completed": true
         },
     {
@@ -54,7 +54,19 @@ export default function CompletionInput({setType, place,startDate, setStartDate,
                 })
             }
         </select>
-        </div>
+    </div>
+    <div className='form-group'>
+        <label> Capacity </label>
+        <br/>
+        <input type="text" value={capacity} onChange= {(e)=> {setCapacity(e.target.value)}}/>
+    </div>
+    <br/>
+    <div className='form-group'>
+        <label> Price $ </label>
+        <br/>
+        <input type="text" value={price} onChange= {(e)=> {setPrice(e.target.value)}}/>
+    </div>
+    <br />
      <div className='form-group'>
        <label>Start Date</label>
        <br/>

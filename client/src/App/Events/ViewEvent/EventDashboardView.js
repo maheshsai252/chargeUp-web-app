@@ -24,8 +24,7 @@ export default function EventDashboardView({event, regs}) {
     },[regs])
   return (
     <div>   
-        <h4>Total regs is {count}</h4>
-        <h4>regs by date</h4>
+     
         <br />
         <ParticipantsTable groups={groups} />
     </div>

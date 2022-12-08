@@ -23,8 +23,8 @@ export default function EventDetailEntry() {
                 setLoading(false)
             }
         }
-    
-        getEvent();
+       getEvent();
+        
         
     },[nameTag]);
   return (

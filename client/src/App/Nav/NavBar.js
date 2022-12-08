@@ -24,8 +24,8 @@ export default function NavBar() {
               
               <li className="nav-item">
               <button className='nav-button'>  
-              
-               <i className="fas fa-plus" aria-hidden="true"></i>
+              <a href="/createEvent/"> <i className="fas fa-plus" aria-hidden="true"></i></a>
+               
               </button>
                 {/* <a className={`nav-link ${tab==="Home" ? "active" : ""}`} aria-current="page" href="/">Home</a> */}
               </li>

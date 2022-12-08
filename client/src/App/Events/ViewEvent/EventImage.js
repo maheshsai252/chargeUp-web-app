@@ -5,7 +5,7 @@ export default function EventImage({event}) {
     <div>
          <div className="row">
          {
-          event.filenames.length !==0 ? 
+          event.filenames!== undefined && event.filenames.length !==0 ? 
           <img style={{width: '100%', height: '100%'}}src= {"https://chargeup.s3.amazonaws.com/"+event.filenames[0]} alt='lol'/> 
           :
           <p>no image</p>

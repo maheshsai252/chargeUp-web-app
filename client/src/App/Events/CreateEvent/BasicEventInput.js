@@ -23,11 +23,11 @@ export default function BasicEventInput({summary,setSummary, setStatus,csteps,se
     const handleNext = () => {
         setCsteps([
             {
-                "name": "Input",
+                "name": "About",
                 "completed": true
             }, 
             {
-                "name": "Verify",
+                "name": "More",
                 "completed": true
             }, 
             {
@@ -40,6 +40,7 @@ export default function BasicEventInput({summary,setSummary, setStatus,csteps,se
     
   return (
     <div>
+        
         <div class="form-group">
         <label>Event name:</label>
         <br />
@@ -52,7 +53,7 @@ export default function BasicEventInput({summary,setSummary, setStatus,csteps,se
         </div>
         <div class="form-group">
         <label>Enter your summary: </label>
-        
+        <br />
         <textarea
                 type="text" 
                 value={summary}

@@ -9,10 +9,10 @@ body {
 // }
 footer {
     margin-top: 10px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-
+    position: absolute;
+    // left: 0;
+    // bottom: 0;
+  
     width: 100%;
     background-color: red;
     color: white;
@@ -82,10 +82,17 @@ label {
 }
 
 .classin1 {
-  width: 30%;
+  width: 25%;
+  // height: 100%;
+
 }
 .classin2 {
-  width: 70%;
+  // border-left: 1px solid yellow;
+  // border-top: 1px solid yellow;
+
+  width: 75%;
+  padding-left: 20px;
+  background-color: #000;
 }
 @media only screen and (max-width: 480px) {
   .adjuster {
@@ -95,6 +102,9 @@ label {
   }
   .classin1 {
     width: 100%;
+    overflow: scroll;
+    
+
   }
   .classin2 {
     width: 100%;
@@ -131,8 +141,100 @@ label {
     border-radius: 30%;
  }
  .nav-search-button:hover {
-  background-color: white;
+  background-color: yellow;
+  color: #000000;
+ }
+ .nav-search-button a:hover {
+  color: black;
  }
  .nav-item {
   background-color: black;
  }
+ .project {
+  padding: 80px 0;
+  position: relative;
+  background-color: black;
+}
+.outerbg {
+  position: relative;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.innercenter {
+  position: absolute;
+  color: #000000;
+  font-weight: bolder;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+.cards-wrapperv {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+
+.cardv img {
+  max-width: 100%;
+  max-height: 400px;
+  border: 1px solid yellow;
+}
+
+.cardv {
+  margin: 0 0.5em;
+  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  border: none;
+  border-radius: 0;
+}
+.carv {
+  border: 5px solid black;
+}
+*{
+  font-family: 'Raleway', sans-serif;
+  // color:white;
+}
+
+h2{
+  color: #ffb800;
+  
+  align-content: left;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 40px;
+  margin: auto;
+  text-shadow: 1px 1px 1px grey;
+  letter-spacing: 2px;
+  padding: 20px;
+  padding-left: 0px;
+}
+
+.btn_heart {
+  background-color: red; /* Blue background */
+  border: none; /* Remove borders */
+  border-radius: 50%;
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  /* margin:0 0 0 250px;  */
+  /* float:right; */
+}
+
+// p{
+//   display: flex;
+//   align-content: center;
+//   justify-content: center;
+//   font-size: 15px;
+//   letter-spacing: 1px;
+//   margin-left:200px;
+//   margin-right:200px;
+//   text-align: justify;
+//   padding:50px ;
+//   line-height: 25px;
+//   background-color: black;
+//   border-radius: 50px;
+//   box-shadow: 0 0 40px 5px rgb(32, 32, 32);
+
+
+// }

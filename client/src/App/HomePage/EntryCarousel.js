@@ -2,36 +2,32 @@ import React from 'react'
 
 import cemusicalfest from '../resources/cemusicfest.gif'
 import cetheater from '../resources/cetheater.gif'
+import banner from '../resources/banner_m.gif';
+import Carousel from 'react-bootstrap/Carousel';
+import Card from 'react-bootstrap/Card'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default function EntryCarousel() {
   return (
     <div>
-        <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
-        <div className="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          
-        </div>
-        <div className="carousel-inner">
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img src={cemusicalfest} alt="musicfest" />
-            </div>
-      
-            <div className="carousel-item">
-              <img src={cetheater} alt="game" />
-            </div>
-          
-            <div className="carousel-item">
-              {/* <img src="../../resources/cecarnival.gif" alt="nusan" style="width:100%;" />  */}
-              
-            </div>
+    <Carousel>
+    <Carousel.Item interval={5000}>
+                <Card className="carv">
+                    <img src={cemusicalfest} type="gif" alt="banner1" />
+                </Card>
+            </Carousel.Item>
+            <Carousel.Item interval={5000}>
+                <Card className="carv">
+                    <img src={banner} type="gif" alt="banner1" />
+                </Card>
+            </Carousel.Item>
            
-          </div>
-          
-        </div>
-       
-      </div>
+            <Carousel.Item interval={5000}>
+                <Card className="carv">
+                    <img src={cetheater} type="gif" alt="banner1" />
+                </Card>
+            </Carousel.Item>
+        </Carousel>
   </div>
   )
 }

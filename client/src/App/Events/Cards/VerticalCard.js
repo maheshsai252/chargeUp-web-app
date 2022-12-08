@@ -12,9 +12,7 @@ export default function VerticalCard({event}) {
         <div className="metav">
         <div className='photov'>
             <img style={{width: '350px'}} 
-                src= {"https://chargeup.s3.amazonaws.com/"+event.filenames[0]} alt='lol'/> 
-
-         
+                src= {"https://chargeup.s3.amazonaws.com/"+event.filenames[0]} alt='lol'/>          
         </div>    
             {/* <div className="photov" style={{backgroundImage: `url(${bgimage})`}}></div> */}
         </div>

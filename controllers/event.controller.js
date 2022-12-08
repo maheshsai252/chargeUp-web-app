@@ -7,22 +7,23 @@ const Registration = db.registration;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+const { set } = require("mongoose");
 
 function hav(x) {
-    const s = sin(x / 2)
+    const s = Math.sin(x / 2)
     return s * s
   }
-  
+const PI_180 = Math.PI / 180;
   function relativeHaversineDistance(lat1, lon1, lat2, lon2) {
     const aLatRad = lat1 * PI_180
     const bLatRad = lat2 * PI_180
     const aLngRad = lon1 * PI_180
     const bLngRad = lon2 * PI_180
   
-    const ht = hav(bLatRad - aLatRad) + cos(aLatRad) * cos(bLatRad) * hav(bLngRad - aLngRad)
+    const ht = hav(bLatRad - aLatRad) + Math.cos(aLatRad) * Math.cos(bLatRad) * hav(bLngRad - aLngRad)
     // since we're only interested in relative differences,
     // there is no need to multiply by earth radius or to sqrt the squared differences
-    return asin(ht)
+    return Math.asin(ht)
   }
 
 exports.createEvent = async (req, res) => {
@@ -39,6 +40,7 @@ exports.createEvent = async (req, res) => {
     price: params.price,
     type: params.type,
     capacity: params.capacity,
+    available: params.capacity,
     date: params.date,
     latitude: params.latitude,
     longitude: params.longitude,
@@ -110,16 +112,12 @@ exports.getAllEvents = async (req,res) => {
     try {
       console.log("starting");
         const searchCategoryArray = req.body.searchCategory;
-        const start = req.body.start;
+        const start = req.body.start == undefined ? new Date() : req.body.start;
         const end = req.body.end;
         const price = req.body.price;
         const search = req.body.search;
         console.log(searchCategoryArray,start,end,price)
-        // const orArray = searchCategoryArray.map((seachValue) => {
-        //     return {
-        //         type: seachValue,
-        //     }
-        // });
+        
       
         var data = await Event.find({$and: [{startDate: {
           $gte: start, 
@@ -148,6 +146,54 @@ exports.getAllEvents = async (req,res) => {
       });
     }
   }
+  exports.fetchEventsCreated = async (req,res) => {
+    try {
+      if(req.body.userid === undefined) {
+        res.status(500).send("No user id");
+        return
+      }
+      var data = await Event.find({$and: [{
+        createdBy: req.body.useid
+      } 
+            
+    ]})
+    res.status(200).send(data); 
+    } catch (error) {
+      console.log(err);
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving details."
+      });
+    }
+  }
+  exports.fetchEventsByCategory = async (req,res) => {
+    try {
+      console.log("starting");
+        const searchCategoryArray = req.body.searchCategory;
+        const start = req.body.start;
+        const end = req.body.end;
+        const price = req.body.price;
+        const search = req.body.search;
+        console.log(searchCategoryArray,start,end,price)
+        
+      
+        var data = await Event.find({$and: [{startDate: {
+          $gte: new Date(), 
+          
+      }},{
+        type: searchCategoryArray
+        }        
+      ]})
+      console.log(data,"data fetching");
+        res.status(200).send(data);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving details."
+      });
+    }
+  }
   exports.filterEventsByPrice = async (req,res) => {
     try {
         const low = req.body.pricelow;
@@ -160,7 +206,6 @@ exports.getAllEvents = async (req,res) => {
         });
       var data = await Event.aggregate([{startDate: {
         $gte: new Date(), 
-        
     }},{
         price: {
             $gte: low,
@@ -232,11 +277,12 @@ exports.getAllEvents = async (req,res) => {
             
         }
       });
-      console.log(data[0]["capacity"]);
+      data=data.filter((a) => {return a.place !== "online"|| a.place !== "Online"})
       data = data.sort((a,b) => {
         console.log(a,b);
         return (relativeHaversineDistance(a["latitude"], a["longitude"], lat, long) - relativeHaversineDistance(b["latitude"], b["longitude"], lat, long));
       })
+      console.log(data, "lslsl")
       res.status(200).send(data);
     } catch (err) {
       res.status(500).send({
@@ -322,12 +368,13 @@ exports.filterByTags = async (req,res) => {
 exports.deleteEvent = async (req, res) => {
   try {
     await Event.findOneAndRemove({
-      _id: req.body.id
+      _id: req.body.eventid
     });
     res.status(200).send({
       message: "Event deleted"
     });
   } catch (err) {
+    console.log(err);
     if (err) {
       res.status(500).send({ message: err });
       return;
@@ -341,26 +388,22 @@ exports.deleteEvent = async (req, res) => {
   exports.updateEvent = async(req, res) => {
     try {
       const params = req.body;
+      console.log(req.body.filenames, "before update")
       const eventupdated = await Event.findOneAndUpdate({
-        _id: req.body.id
+        _id: req.body.eventid
       },{
         name: params.name,
         summary: params.summary,
         description: params.description,
-        tags: params.tags,
         price: params.price,
-        type: params.type,
         capacity: params.capacity,
-        date: params.date,
-        latitude: params.latitude,
-        longitude: params.longitude,
-        place: params.place,
+        startDate: params.startDate,
+        endDate: params.endDate,
+        filenames: params.filenames
     });
-  res.status(200).send({
-    id: eventupdated._id,
-    name: eventupdated.name,
-    date: eventupdated.date
-  });
+    await Event.findByIdAndUpdate(req.body.eventid, { $inc: { available: req.body.available } })
+    console.log(eventupdated,"after")
+  res.status(200).send(eventupdated);
 
       
     } catch (err) {
@@ -388,6 +431,43 @@ exports.deleteEvent = async (req, res) => {
             res.status(500).send({ message: err });
             return;
           }
+    }
+  }
+  exports.likeEvent = async (req,res) => {
+    try {
+        const userid = req.body.userid;
+        const eventid = req.body.eventid;
+
+        const user = await User.findOne({
+          _id: userid
+        })
+        const event = await Event.findOne({
+          _id: eventid
+        })
+        if(user===undefined) {
+          res.status(500).send({"message": "user is not defined"});
+        }
+        if(event===undefined) {
+          res.status(500).send({"message": "user is not defined"});
+        }
+        
+        const interests =  Array.from(new Set(user.interests.concat(event.tags)))
+        console.log(interests)
+        const users = await User.findOneAndUpdate({
+          _id: userid
+        }, {
+          interests: interests
+        });
+        res.status(200).send({
+          "message": "liked success"
+        });
+        console.log(users.interests)
+    } catch (err) {
+      if (err) {
+        console.log(err);
+        res.status(500).send({ message: err });
+        return;
+      }
     }
   }
   exports.pairing = async (req,res) => {

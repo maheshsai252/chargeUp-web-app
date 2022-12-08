@@ -16,6 +16,22 @@ export const createEvent = async (body) => {
         return {"id": error.response.data["message"],"status": 400};
     }
 }
+export const updateEvent = async (body) => {
+    const headers = {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'Authorization': 'JWT fefege...'
+      }
+    try {
+        const response = await axios.post('/api/event/update/', body, {
+            headers: headers
+          });
+        console.log('response  ', response)
+        return response;
+    } catch(error) {
+        console.log(error);
+        return {"id": error.response.data["message"],"status": 400};
+    }
+}
 export const signinWithGoogle = async (email, name, googleId) => {
     const headers = {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',

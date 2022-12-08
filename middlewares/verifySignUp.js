@@ -78,7 +78,7 @@ checkUpdate = async (req, res, next) => {
         res.status(400).send({ message: "Failed! Nothing to update" });
         return;
       }
-      if(req.body.password!=null && !isPasswordValid(req.body.password)) {
+      if(req.body.password!=null && req.body.password!='none' && !isPasswordValid(req.body.password)) {
         res.status(400).send({ message: "Failed! Password is not valid" });
         return;
       } else if(req.body.password == null) {

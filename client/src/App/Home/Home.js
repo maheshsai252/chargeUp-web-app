@@ -8,6 +8,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import Footer from '../Nav/Footer';
 import { useDispatch } from 'react-redux';
 import { ActionCreators } from '../actions/actionCreators';
+import Categories from '../HomePage/Categories';
+import EventsNearYou from '../HomePage/EventsNearYou';
 
 function Home() {
     const dispatch = useDispatch();
@@ -18,7 +20,9 @@ function Home() {
     <div>
         <NavBar />
         <EntryCarousel />
+        <Categories />
         <TrendingEvents />
+        <EventsNearYou />
         <Footer />
     </div>
   )

@@ -33,7 +33,7 @@ export default function EventCreatorView({event}) {
     <div>
         <NavBar />
           <div className='adjuster classout'>
-            <EventCreaterSider setcs={setcs} />
+            <EventCreaterSider setcs={setcs} event={event} />
             <EventCreaterRightSideView cs={cs} regs={regs} event={event} />
           </div>
          

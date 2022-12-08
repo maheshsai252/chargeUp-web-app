@@ -62,11 +62,11 @@ exports.get = async (req,res) => {
     try {
       console.log(req.body, "sessioning");
       const userId = req.body.userid;
-      var data = await User.find({
+      var user = await User.find({
         _id: req.body.userid
       });
-      console.log("data",data);
-      res.send(data);
+      console.log("data",user);
+      res.send(user);
     } catch (err) {
       res.status(500).send({
         message:
@@ -76,6 +76,7 @@ exports.get = async (req,res) => {
       
       
   }
+
 exports.getAll = async (req,res) => {
   try {
     console.log(req.session, "session");
@@ -157,17 +158,39 @@ exports.deleteUser = async (req, res) => {
   exports.updateUser = async(req, res) => {
     try {
       console.log(req.body.name);
-      await User.findOneAndUpdate({
-        email: req.body.email
-      },{
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 8),
-        name: req.body.name
-      });
+      let user;
+      if(req.body.password ==='none') {
+        user = await User.findOneAndUpdate({
+          email: req.body.email
+        },{
+          email: req.body.email,
+          password: bcrypt.hashSync(req.body.password, 8),
+          name: req.body.name,
+          
+        });
+      } else {
+        user = await User.findOneAndUpdate({
+          email: req.body.email
+        },{
+          email: req.body.email,
+          name: req.body.name,
+          
+        });
+      }
+      if(req.body.file !== 'none') {
+         user = await User.findOneAndUpdate({
+          email: req.body.email
+        },{
+          file: req.body.file
+
+        });
+      }
+      console.log(user)
       res.status(200).send({
         message: "User Updated",
         name: req.body.name,
-        email: req.body.email
+        email: req.body.email,
+        image: user.file
       });
     } catch (err) {
       if (err) {

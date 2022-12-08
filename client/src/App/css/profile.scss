@@ -1,0 +1,179 @@
+.profile {
+    background-color: black;
+    width: 100%;
+    color: white;
+}
+
+.imagesv {
+    max-width: 100%;
+    height: 100px;
+    position: relative;
+}
+
+.cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.profilePic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 170px;
+}
+
+.profileContainer {
+    padding: 20px 70px;
+
+    /* @include mobile{
+    padding: 10px;
+  }
+
+  @include tablet{
+    padding: 20px;
+  } */
+}
+
+.uInfo {
+    height: 180px;
+    -webkit-box-shadow: 0px 0px 25px -10px white;
+    -moz-box-shadow: 0px 0px 25px -10px white;
+    box-shadow: 0px 0px 25px -10px white;
+    border-radius: 20px;
+    background-color: rgba(128, 128, 128, 0.32);
+    color: white;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    /* @include mobile{
+      flex-direction: column;
+      height: 30vh;
+      padding: 20px;
+      margin-top: 100px;
+    } */
+}
+
+.left {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+
+    /* @include tablet{
+        flex-wrap: wrap;
+      } */
+}
+
+.left a {
+    color: white;
+}
+
+.center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px;
+}
+
+.center span {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.info .item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    padding: 10px;
+
+}
+
+.info .item span {
+    font-size: 18px;
+}
+
+.buttonv {
+    border: none;
+    background-color: gold;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: medium;
+}
+
+.buttonv:hover {
+    background-color: rgb(247, 218, 54);
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    font-size: 18px;
+}
+
+@media (max-width: 480px) {
+    .profileContainer {
+        padding: 10px;
+    }
+
+    .uInfo {
+        flex-direction: column;
+        height: 50vh;
+        padding: 20px;
+        margin-top: 100px;
+    }
+
+    .images {
+        max-width: 480px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .profileContainer {
+        padding: 20px;
+    }
+
+    .left {
+        flex-wrap: wrap;
+    }
+
+    .images {
+        max-width: 768px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px){
+    .profileContainer {
+        padding: 20px;
+    }
+
+    .left {
+        flex-wrap: wrap;
+    }
+
+    .images {
+        max-width: 1024px;
+    }
+}

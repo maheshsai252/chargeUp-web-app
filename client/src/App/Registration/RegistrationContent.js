@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { format } from 'date-fns'
+
 import '../css/register.scss'
 import imgw from '../resources/event_img.jpg'
 import pin from '../resources/pin.png'
@@ -21,11 +23,14 @@ export default function RegistrationContent({event})  {
                     <br/>
                     <div class="item__description">
                         <ul style={{listStyle: "none"}}>
-                        <li class="item__price">
-                        $ {event.price}
+                        <li class="item__price" style={{color: "green"}}>
+                        {event.price===0 ? <p >"Free"</p> : <p>${event.price}</p> }
                     </li>
-                            <li style = {{fontSize : "larger"}}> <img src={pin} alt="pin" style={{height: "24px", width: "24px"}} /> Fenway Park, Boston, MA</li>
-                            <li style = {{fontSize : "larger"}} ><img src={calendar} style={{height: "24px", width: "24px"}} alt="" /> 22nd December, 2022</li><br />
+                    <br />
+                            <li style = {{fontSize : "large"}}> <img src={pin} alt="pin" style={{height: "24px", width: "24px"}} /> <span style={{paddingLeft: '10px'}}>{event.place.split(',')[0]}</span></li>
+                            <br />
+                            <li style = {{fontSize : "large", }} ><img src={calendar} style={{height: "24px", width: "24px" }} alt="" /><span style={{paddingLeft: '15px'}}>{format(new Date(event.startDate), 'yyyy/MM/dd kk:mm')}</span></li><br />
+                            <br />
                             <li>{event.summary}</li>
                         </ul>
 

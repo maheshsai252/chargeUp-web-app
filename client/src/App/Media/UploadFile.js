@@ -6,8 +6,8 @@ const S3_BUCKET ='chargeup';
 const REGION ='us-east-1';
 
 AWS.config.update({
-    accessKeyId: 'AKIASJ7GAPUFCM4QNZ7D',
-    secretAccessKey: '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'
+    accessKeyId: process.env.REACT_APP_ACCESSKEY,
+    secretAccessKey: process.env.REACT_APP_SECRETKEY
 })
 
 const myBucket = new AWS.S3({
@@ -21,10 +21,12 @@ const UploadImageToS3WithNativeSdk = ({files,setSelectedFiles}) => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileInput = (e) => {
+        e.preventDefault();
         setSelectedFile(e.target.files[0]);
     }
 
-    const uploadFile = (file) => {
+    const uploadFile = (e, file) => {
+        e.preventDefault();
         console.log("uploading")
         const id = uuidv4();
         const params = {
@@ -61,7 +63,7 @@ const UploadImageToS3WithNativeSdk = ({files,setSelectedFiles}) => {
     return <div className='spacev'>
         {/* <div>Native SDK File Upload Progress is </div> */}
         <input style={{color: "orange"}}type="file" onChange={handleFileInput}/> 
-        <button onClick={() => uploadFile(selectedFile)}> Upload</button>
+        <button onClick={(e) => uploadFile(e,selectedFile)}> Upload</button>
     </div>
 }
 

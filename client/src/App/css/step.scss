@@ -18,7 +18,7 @@ h3 {
     flex-direction: row;
 }
 .stepTitle {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 // .stepseparator {
 //   padding-left: 40px;
@@ -77,6 +77,11 @@ h3 {
 .questionNumberLine {
   display: hidden;
 }
+.steps {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
 @media only screen and (max-width: 480px) {
   
   .circle::after {
@@ -85,23 +90,22 @@ h3 {
     
   }
   .questionNumberLine {
-    width: 100px;
-   border:1px solid orange;
+    width: 20px;
+   border:1px solid yellow;
    float:left;
    margin-left: 30px;
+  }
+
+  .stepTitle {
+    padding-left: 0px;
   }
   .stepcontainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    // justify-content: space-around;
     border-top: 2px solid black;
     padding-top: 15px;
     margin-top: 15px;
   }
 
-}
-.steps {
-  display: flex;
-  align-items: center;
-  margin: 10px;
 }
