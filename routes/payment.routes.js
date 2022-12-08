@@ -38,7 +38,7 @@ module.exports = (app) => {
             receipt_email: req.body.email,
             automatic_payment_methods: { enabled: true },
           });
-          console.log(paymentIntent)
+          console.log(paymentIntent,"intent")
           // Send publishable key and PaymentIntent details to client
           res.status(200).send({
 
