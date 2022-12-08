@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-
+const path = require('path');
 const app = express();
 // creating 24 hours from milliseconds
 const oneDay = 1000 * 60 * 60 * 24;
