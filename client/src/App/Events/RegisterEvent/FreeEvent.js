@@ -32,7 +32,7 @@ export default function FreeEvent({event}) {
 
             </div>
         </div> 
-        <p>{message}</p>
+        <p className='status'>{message}</p>
     </div>
   )
 }

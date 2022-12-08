@@ -128,7 +128,7 @@ export default function FinalInput({place, setCsteps, files,setSelectedFiles, na
          <button id="submit-btn1" className='float-right'  type='submit' value="Add Event"> Add Event</button> 
         <button id="submit-btn1" className='float-right' onClick={(e)=>handlePrevious(e)}>Prev</button> 
         {/* <button onClick={handlePrevious}>Prev</button> */}
-</div>
+        </div>
     </div>
   )
 }

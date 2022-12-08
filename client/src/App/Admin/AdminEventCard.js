@@ -50,6 +50,8 @@ function CardImage({event}) {
         </div>
         <div>
             <button onClick={() => {navigate('/update/'+event.nameTag)}} className='unregister' style={{border: '1px solid yellow'}}> Update Event </button>
+            <button  onClick={() => {navigate('/admin/manage/'+event.nameTag)}} className='unregister' style={{marginLeft: '10px',border: '1px solid yellow'}}> Manage Event </button>
+
         </div>
         {/* <div>
             <button className='pairingbutton'><a style={{textDecoration: 'none'}} href={"/pairing/"+event.nameTag}>Pairing </a>  </button>

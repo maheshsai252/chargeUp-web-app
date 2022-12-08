@@ -147,6 +147,7 @@ exports.getAllEvents = async (req,res) => {
     }
   }
   exports.fetchEventsCreated = async (req,res) => {
+    console.log("fetching created events")
     try {
       if(req.body.userid === undefined) {
         res.status(500).send("No user id");
@@ -157,6 +158,7 @@ exports.getAllEvents = async (req,res) => {
       } 
             
     ]})
+    console.log(data, "ddd")
     res.status(200).send(data); 
     } catch (error) {
       console.log(err);

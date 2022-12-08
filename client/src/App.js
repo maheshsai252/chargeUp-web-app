@@ -29,6 +29,7 @@ import Profile from './App/ProfilePage/profilepage';
 import CategoryEntry from './App/HomePage/Category/CategoryEntry';
 import AdminView from './App/Admin/AdminView';
 import UpdateEventEntry from './App/Events/Update Event/UpdateEventEntry';
+import AdminManageEvent from './App/Admin/AdminManageEvent';
 function setToken(userToken) {
   sessionStorage.setItem('token', JSON.stringify(userToken));
 }
@@ -107,6 +108,9 @@ function App() {
       <Route  path='/category/:category' element={<CategoryEntry />} >
       </Route>
       <Route  path='/admin' element={<AdminView />} >
+      </Route>
+      
+      <Route  path='/admin/manage/:nameTag' element={<AdminManageEvent />} >
       </Route>
       {/* <Route path="/viewEvent" element = {<ViewEvent />}></Route>  */}
       {/* <Route path = "/login" element = { <Login setToken={setToken} />}></Route> */}

@@ -24,7 +24,7 @@ export default function NavBar() {
               
               <li className="nav-item">
               <button className='nav-button'>  
-              <a href="/createEvent/"> <i className="fas fa-plus" aria-hidden="true"></i></a>
+              <a href="/createEvent" style={{textDecoration: "none"}}> Create Event</a>
                
               </button>
                 {/* <a className={`nav-link ${tab==="Home" ? "active" : ""}`} aria-current="page" href="/">Home</a> */}
@@ -36,7 +36,9 @@ export default function NavBar() {
                 {/* <a className={`nav-link ${tab==="Home" ? "active" : ""}`} aria-current="page" href="/">Home</a> */}
               </li>
               <li className="nav-item">
-                <button className="nav-link nav-search-button" > <a style={{textDecoration: 'none'}} href="/search">Search</a> <i class="fas fa-magnifying-glass"></i></button>
+                <button className="nav-link nav-button" >
+                 <a style={{textDecoration: 'none'}} href="/search">Search</a> <i class="fas fa-magnifying-glass"></i>
+                 </button>
                   {/* <input className="form-control me-3" type="search" placeholder="Search" aria-label="Search" /> */}
                   {/* <button className=" ">Search</button> */}
               </li>

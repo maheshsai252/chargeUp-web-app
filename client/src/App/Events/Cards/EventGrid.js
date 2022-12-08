@@ -13,7 +13,7 @@ export default function EventGrid({events}) {
     <div className='event-grid-container'>
     {
         events.map((event)=> {
-            return <EventGridCard event={event}/>
+            return event !== undefined ? <EventGridCard event={event}/> : <p></p>
         })
     }
         

@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import EventGrid from '../Events/Cards/EventGrid';
+import Loader from '../Home/Loader';
 
 export default function EventsNearYou() {
     const [lat, setLat] = useState(42.3380964);
   const [long, setLong] = useState(-71.0879595);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
     useEffect(()=> {
         const apiCall = async (lat,long) => {
             try 
@@ -22,11 +32,12 @@ export default function EventsNearYou() {
                
                     console.log(response,"gotten");
                     if(response.data.length > 10) {
-                        setData(response.data.slice(1,11));
+                        
+                        setData(shuffle(response.data.slice(1,11)));
                    
                         // setEvents(response.data.slice(1,11));
                       } else {
-                        setData(response.data);
+                        setData(shuffle(response.data));
                       }
                       setLoading(false);
 
@@ -49,7 +60,7 @@ export default function EventsNearYou() {
     <div>
     <h2>Events Near You</h2>
     {
-        loading ? <p>Loading..</p> : <EventGrid events={data} />
+        loading ? <Loader /> : <EventGrid events={data} />
     }
     </div>
   )

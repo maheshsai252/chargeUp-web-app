@@ -146,7 +146,7 @@ export default function ProfileView({myEvents, user, setUser, events}) {
             <div className="Events">
                 <h2>Find Your Attended Events Below</h2>
             </div>
-            <EventGrid events={events} />
+            {/* <EventGrid events={events} /> */}
             <div className="Events">
                 <h2>Manage Your Events</h2>
             </div>

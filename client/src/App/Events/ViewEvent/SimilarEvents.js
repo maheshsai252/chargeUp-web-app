@@ -16,8 +16,13 @@ export default function SimilarEvents({event}) {
       console.log( response,"gotten")
       console.log(response,"seeve")
       if(response.status===200) {
-          setEvents(response.data)
-          
+          // setEvents(response.data)
+          if(response.data.length > 10){
+            setEvents(response.data.slice(0,10))
+          } else {
+            setEvents(response.data)
+          }
+
       } else {
           
       }

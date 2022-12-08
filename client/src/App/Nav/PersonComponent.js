@@ -71,8 +71,9 @@ function LoggedIn(props) {
         </a>
         <ul className="dropdown-menu">
 
-          <li style={{backgroundColor: "transparent"}}><a className="dropdown-item" href="/myevents"> My Events</a></li>
-          
+          <li style={{backgroundColor: "transparent"}}><a className="dropdown-item" href="/myevents"> My Registrations</a></li>
+          <li style={{backgroundColor: "transparent"}}><a className="dropdown-item" href="/profile"> My Profile</a></li>
+
         
           <button className="btn nav-button" type="submit" style={{color: 'red'}} onClick={handleSubmit}>Logout</button>
           

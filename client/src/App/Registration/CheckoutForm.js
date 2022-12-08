@@ -33,13 +33,14 @@ export default function CheckoutForm({event}) {
         // return_url: `${window.location.origin}/`,
       },
     });
+    console.log(res)
     if(res.paymentIntent.status === "succeeded") {
         setIsProcessing(false);
         console.log("payment succeded");
         userRegister();
 
     }
-    setMessage(res.paymentIntent.status);
+    // setMessage(res.paymentIntent.status);
 
     console.log(res.paymentIntent.status,"er");
     if (res.error.type === "card_error" || res.error.type === "validation_error") {
@@ -82,7 +83,7 @@ export default function CheckoutForm({event}) {
               </span>
             </button>
         {/* Show any error or success messages */}
-          {message && <div id="payment-message">{message}</div>}
+          {message && <p className="status" style={{color: "orange", margin: "20px", fontWeight: "bolder", fontSize: "larger"}}>{message}</p>}
                 {/* <a href="#" class="register-btn action__submit">Place your Order</a> */}
             </div>
         </div> 

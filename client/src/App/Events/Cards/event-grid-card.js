@@ -5,9 +5,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 
 function CardImage({event}) {
-    const isImageURL = event.filenames[0];
+    console.log(event.filenames, "filesu")
+    // const isImageURL = event.filenames[0];
     // If an image was passed:
-    if (isImageURL) {
+    if (event && event.filenames[0]) {
       return (
         <div className="styleImage">
         <img style={{width: '350px'}} 

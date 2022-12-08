@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import AutoComplete from './AutoComplete';
 export default function CompletionInput({price,setPrice,capacity, setCapacity, setType, place,startDate, setStartDate, endDate, setEndDate, setStatus, setCsteps, name, setPlace, files,setSelectedFiles}) {
     
-   
+    
     const handlePrevious = () => {
         setCsteps([{
             "name": "About",

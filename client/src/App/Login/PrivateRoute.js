@@ -1,7 +1,7 @@
 import React from 'react'
 // import { Navigate, Route } from 'react-router-dom'
 import { Navigate, Outlet } from 'react-router-dom';
-import Login from './Login';
+import Login from '../../App/Login/SignInUp';
 function getToken() {
     console.log("yes");
     const tokenString = sessionStorage.getItem('token');

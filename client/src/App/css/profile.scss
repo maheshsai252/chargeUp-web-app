@@ -42,7 +42,7 @@
 }
 
 .uInfo {
-    height: 180px;
+    height: 230px;
     -webkit-box-shadow: 0px 0px 25px -10px white;
     -moz-box-shadow: 0px 0px 25px -10px white;
     box-shadow: 0px 0px 25px -10px white;
@@ -137,11 +137,12 @@
 @media (max-width: 480px) {
     .profileContainer {
         padding: 10px;
+        height: 600px;
     }
 
     .uInfo {
         flex-direction: column;
-        height: 50vh;
+        height: 500px;
         padding: 20px;
         margin-top: 100px;
     }
@@ -167,6 +168,7 @@
 @media (min-width: 768px) and (max-width: 1024px){
     .profileContainer {
         padding: 20px;
+
     }
 
     .left {

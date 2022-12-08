@@ -1,11 +1,13 @@
 import React from 'react'
 import { format } from 'date-fns'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 export default function EventIntro({event}) {
     const style = {
         fontFamily: 'italic',
         paddingTop: '8px'
     }
+    const navigate = useNavigate();
     const likeEvent = async (event) => {
       try {
           const res = await axios.post('/api/likeEvent', {
@@ -19,7 +21,7 @@ export default function EventIntro({event}) {
   return (
     <div>
         <div className="hero-unit" style={{paddingTop: '20px'}}>
-             <p className="badge bg-secondary"> <em>Trending </em> #2</p>
+             <p className="badge bg-secondary"> <em>Trending </em> # {Math.floor(Math.random() * 10)} </p>
 
             {/* <h5>{format(new Date(event.startDate),"dd-mm-yyyy")} </h5> */}
             <div className='spacebtn'>
@@ -29,7 +31,7 @@ export default function EventIntro({event}) {
                 {
                   sessionStorage.getItem('userid') !== undefined && event.createdBy !== sessionStorage.getItem('userid') ? 
                   <div>
-                <button>
+                <button onClick={()=> {navigate('/register/'+event.nameTag)}}>
                     Register
                 </button>
                 <button style= {{margin: "10px"}}class="btn_heart" onClick={() => {likeEvent(event)}}><i class="fas fa-solid fa-heart"></i></button>

@@ -20,6 +20,11 @@ exports.createRegistration = async (req, res) => {
   });
     if(event.available <=0) {
       res.status(500).send("Seats are unavailable");
+      return
+    }
+    if(event.endDate <=new Date()) {
+      res.status(500).send("Registration Window closed");
+      return;
     }
   try {
     const registrationcreated = await registration.save();

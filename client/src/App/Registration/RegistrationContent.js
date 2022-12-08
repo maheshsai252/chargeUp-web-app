@@ -27,9 +27,12 @@ export default function RegistrationContent({event})  {
                         {event.price===0 ? <p >"Free"</p> : <p>${event.price}</p> }
                     </li>
                     <br />
-                            <li style = {{fontSize : "large"}}> <img src={pin} alt="pin" style={{height: "24px", width: "24px"}} /> <span style={{paddingLeft: '10px'}}>{event.place.split(',')[0]}</span></li>
+                            <li style = {{fontSize : "large"}}> <img src={pin} alt="pin" style={{height: "24px", width: "24px"}} /> <span style={{paddingLeft: '10px'}}>{event.place!==undefined ? event.place.split(',')[0] : ""}</span></li>
                             <br />
-                            <li style = {{fontSize : "large", }} ><img src={calendar} style={{height: "24px", width: "24px" }} alt="" /><span style={{paddingLeft: '15px'}}>{format(new Date(event.startDate), 'yyyy/MM/dd kk:mm')}</span></li><br />
+                           
+                            <li style = {{fontSize : "large", }} ><img src={calendar} style={{height: "24px", width: "24px" }} alt="" /><span style={{paddingLeft: '15px'}}>{event.startDate !==undefined ? format(new Date(event.startDate), 'yyyy/MM/dd kk:mm') : <></>}</span></li><br />
+                            <br />
+                            <li style = {{fontSize : "large", fontWeight: "bold"}}> Available: <span style={{paddingLeft: '10px'}}>{event.available!==undefined ? event.available : ""}</span></li>
                             <br />
                             <li>{event.summary}</li>
                         </ul>

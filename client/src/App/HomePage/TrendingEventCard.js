@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import "../css/flip.scss";
 
 function TrendingEventCard(props) {
-
+  useEffect(()=> {
+    
+  })
   return (
     <div className="col-12 col-md-6 col-lg-3 card2">
         <div className="flip-card">

@@ -7,6 +7,8 @@ import NavBar from '../../../Nav/NavBar';
 import Footer from '../../../Nav/Footer';
 import avatar from '../../../resources/avatar-2.jpg';
 import mail from '../../../resources/mail.png';
+import cover from "../../../resources/cover.jpg";
+
 import UsersList from './UsersList';
 
 export default function PairingEntry() {
@@ -50,7 +52,15 @@ export default function PairingEntry() {
   return (
     <div>
         <NavBar />
-            <h1> Pairing suggestions for you {event.title}</h1>
+        <div className='outerbg'>
+                 <img src={cover}
+                    alt=""
+                    className="cover"
+                    style={{height: "200px"}}
+                />
+            <h1 className='innercenter'> Pairing suggestions for you {event.title}</h1>
+         </div>
+        
             <button onClick={pairing}>
                 Get Pairing Suggestions
             </button>

@@ -17,7 +17,11 @@ export default function RegistartionHeader({event}) {
           </div>
         </div>
         <section className="register-content">
-        <RegistrationContent event={event } />
+         {
+          event !== undefined ?
+          <RegistrationContent event={event } /> :
+          <></>
+         }
 
         </section>
         <div>

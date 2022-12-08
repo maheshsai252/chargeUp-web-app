@@ -43,12 +43,12 @@ const [user,setUser] = useState("");
             {/* <div className="divider"/> */}
             <div className="col">
                 <img src={calendar} className="icon" alt="" />
-                <h6 style={style}>{format(new Date(event.startDate), 'yyyy/MM/dd kk:mm')}</h6>
+                <h6 style={style}>{event.startDate !== undefined ? format(new Date(event.startDate), 'yyyy/MM/dd kk:mm') : ""}</h6>
             </div>
             {/* <div className="divider"/> */}
             <div>
                 {/* <img src="../../resources/location.png" className="icon" alt="" /> */}
-                <h6 style={style}>{event.place.split(',')[0]}</h6>
+                <h6 style={style}>{event.place !== undefined ? event.place.split(',')[0] : ""}</h6>
             </div>
           </div>
     </div>

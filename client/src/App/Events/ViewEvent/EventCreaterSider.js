@@ -9,7 +9,7 @@ export default function EventCreaterSider({setcs, event}) {
         eventid:  event._id
     });
     console.log(response);
-    
+    navigate('/')
 }
   return (
     <div className='stepcontainer classin1'>
