@@ -144,9 +144,13 @@ export default function ProfileView({myEvents, user, setUser, events}) {
             </div>
                         : <p></p>}
             <div className="Events">
-                <h2>Find Your Attended Events Below</h2>
+                <h2>Find Your Registered Events Below</h2>
             </div>
-            {/* <EventGrid events={events} /> */}
+            {
+                events.length === 0 ? <p>No Events Available</p> : <EventGrid events={events} />
+
+            }
+            
             <div className="Events">
                 <h2>Manage Your Events</h2>
             </div>

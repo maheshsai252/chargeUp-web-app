@@ -35,7 +35,7 @@ module.exports = (app) => {
   app.post("/api/events-fetchByCategory/", controller.fetchEventsByCategory);
   app.post("/api/events-created/", controller.fetchEventsCreated);
   app.post('/api/likeEvent',controller.likeEvent);
-  app.post("/api/events-filterByPrice/", controller.filterEventsByPrice);
+  app.post("/api/freeEvents/", controller.fetchFreeEvents);
   app.post("/api/events-fromOrganiser/", controller.filterEventsOfOrganiser);
   app.post("/api/pair-users/", controller.pairing);
   app.post("/api/event/delete", controller.deleteEvent);

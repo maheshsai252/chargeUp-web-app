@@ -8,7 +8,7 @@ export default function VerticalCard({event}) {
     var bgimage = "https://chargeup.s3.amazonaws.com/"+event.filenames[0];
   return (
     <div>
-        <div className="blog-cardv">
+        <div className="blog-cardv" style={{margin: "15px"}}>
         <div className="metav">
         <div className='photov'>
             <img style={{width: '350px'}} 

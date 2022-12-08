@@ -114,9 +114,9 @@ exports.getAllEvents = async (req,res) => {
         const searchCategoryArray = req.body.searchCategory;
         const start = req.body.start == undefined ? new Date() : req.body.start;
         const end = req.body.end;
-        const price = req.body.price;
+        const pr = req.body.price;
         const search = req.body.search;
-        console.log(searchCategoryArray,start,end,price)
+        console.log(req.body)
         
       
         var data = await Event.find({$and: [{startDate: {
@@ -126,8 +126,8 @@ exports.getAllEvents = async (req,res) => {
         type: searchCategoryArray
         }, 
         {
-          "price": {
-              $gt: price
+          price: {
+              $gte: pr
           }
     }, {name: 
       { 
@@ -136,7 +136,7 @@ exports.getAllEvents = async (req,res) => {
   }}
         
       ]})
-      
+        console.log(data);
         res.status(200).send(data);
     } catch (err) {
       console.log(err);
@@ -154,7 +154,7 @@ exports.getAllEvents = async (req,res) => {
         return
       }
       var data = await Event.find({$and: [{
-        createdBy: req.body.useid
+        createdBy: req.body.userid
       } 
             
     ]})
@@ -196,25 +196,13 @@ exports.getAllEvents = async (req,res) => {
       });
     }
   }
-  exports.filterEventsByPrice = async (req,res) => {
+  exports.fetchFreeEvents = async (req,res) => {
     try {
-        const low = req.body.pricelow;
-        const high = req.body.priceHigh;
-
-        const orArray = searchArray.map((seachValue) => {
-            return {
-                type: searchValue,
-            }
-        });
-      var data = await Event.aggregate([{startDate: {
-        $gte: new Date(), 
-    }},{
-        price: {
-            $gte: low,
-            $lt: high 
-            
-        }
-    }])
+        
+        
+      var data = await Event.find({
+        price: 0
+      })
     res.send(data);
     }  catch (err) {
       console.log(err);

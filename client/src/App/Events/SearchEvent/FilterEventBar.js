@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function FilterEventBar({setEvents,search}) {
+export default function FilterEventBar({setEvents, search, setSearch, events}) {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const categories = ["music", "food", "theater", "sports", "arts", "science", "business", "travel"]
@@ -21,14 +21,36 @@ export default function FilterEventBar({setEvents,search}) {
                 search: search
 
             });
-            console.log(tagresponse,"responsive");
+            const pr = price === "free" ? 0 : 1
+            console.log({
+                searchCategory: type,
+                start: startDate,
+                end: endDate,
+                price: price === "free" ? 0 : 1,
+                search: search
+
+            },events ,"responsivep")
+            const ev = events.filter((e) => {
+                return e.type === type && e.price >= pr && e.startDate >= startDate
+            })
+            setEvents(ev);
+            // console.log(price === "free" ? 0 : 1,tagresponse,"responsive");
             setEvents(tagresponse.data);
              
         } catch (error) {
+            console.log(error, "responsive")
             // (error.response.data.message);
             return;
             // console.log(error,"error-res")
         }
+    }
+    const fetchFree = async () => {
+        const response = await axios.post('/api/freeEvents', {
+            
+
+        });
+        setSearch("")
+        setEvents(response.data);
     }
   return (
     <div>
@@ -76,7 +98,13 @@ export default function FilterEventBar({setEvents,search}) {
 
                 
         </select>
+        <br />
+        <br/>
+        <div className='hor'></div>
+        <button onClick={fetchFree}>Fetch All Free Events</button>
+
         </div> : <p></p>}
+      
     </div>
   )
 }

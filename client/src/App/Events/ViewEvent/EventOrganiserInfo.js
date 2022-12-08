@@ -47,8 +47,9 @@ const [user,setUser] = useState("");
             </div>
             {/* <div className="divider"/> */}
             <div>
-                {/* <img src="../../resources/location.png" className="icon" alt="" /> */}
-                <h6 style={style}>{event.place !== undefined ? event.place.split(',')[0] : ""}</h6>
+            <div className="styleLocationLabel"><i class="fas fa-map-pin"></i> {event.place?.split(',')[0]}</div>
+
+                {/* <h6 style={style}>{event.place !== undefined ? event.place.split(',')[0] : ""}</h6> */}
             </div>
           </div>
     </div>

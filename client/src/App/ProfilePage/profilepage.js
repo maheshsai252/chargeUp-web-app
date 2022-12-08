@@ -34,7 +34,7 @@ const Profile = () => {
       const response = await axios.post('/api/events-created/',{
         userid: sessionStorage.getItem("userid")
       });
-      console.log( response.data,"gotten")
+      console.log( response.data,"gotten my events")
         if(response.status===200) {
           setMyEvents(response.data);
         } 

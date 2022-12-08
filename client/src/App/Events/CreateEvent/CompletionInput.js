@@ -46,7 +46,7 @@ export default function CompletionInput({price,setPrice,capacity, setCapacity, s
     <div>
     <div className='form-group'>
         <label> Category </label>
-        <select style={{width: '70%', backgroundColor: "black", color: "white", border: "1px solid yellow"}}className="form-control" onChange={(e) => {setStatus("");setType(e.target.value)}}>
+        <select style={{width: '70%', backgroundColor: "black", color: "white", border: "1px solid yellow"}}className="form-control" onChange={(e) => {setStatus("");console.log(e.target.value,"category");setType(e.target.value)}}>
             {
                 categories.map((category) => {
                     return <option value={category}>{category}</option>

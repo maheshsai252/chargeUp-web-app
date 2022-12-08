@@ -8,6 +8,7 @@ import EventOrganiserInfo from './EventOrganiserInfo'
 import EventStatus from './EventStatus'
 import SimilarEvents from './SimilarEvents'
 import Map from '../../Maps/Map'
+import EventTagsView from './EventTagsView'
 
 export default function ViewEventUser({event}) {
   return (
@@ -19,6 +20,7 @@ export default function ViewEventUser({event}) {
         <EventOrganiserInfo event={event}/>
         <EventDetail event={event}/>
          { event.place !== "online" ? <Map events={[event]} zoomLevel={17} /> : <p></p> }
+         <EventTagsView event={event} />
         <SimilarEvents event={event}/>
         <Footer/>
     </div>

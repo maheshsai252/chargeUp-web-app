@@ -55,6 +55,10 @@ export default function CreateEvent() {
             setStatus("Please add a image ");
             return;
         }
+        if(type.length === 0) {
+            setStatus("Please add a category");
+            return;
+        }
 
         
         try {
@@ -124,7 +128,7 @@ export default function CreateEvent() {
     const [endDate, setEndDate] = useState(new Date());
     const [place, setPlace] = useState();
     const [status, setStatus] = useState("");
-    const [type, setType] = useState("");
+    const [type, setType] = useState("music");
 
     const [tags, setTags] = useState([]);
     const [tagError, setTagError] = useState("");

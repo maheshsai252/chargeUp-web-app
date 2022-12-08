@@ -39,7 +39,7 @@ export default function CategoryEntry() {
          
          "Find your favorite Sports event tickets, schedules and seating charts in the sports events near you. Buy tickets for upcoming sports events, including baseball, basketball, football, golf, MMA and many more."
          ,
-         "art" :
+         "arts" :
          
          "Looking for art-events events in locations near you? Whether you're a local, new in town, or just passing through, you'll be sure to find something on charEup."
          ,

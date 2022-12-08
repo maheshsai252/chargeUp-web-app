@@ -4,6 +4,8 @@ import { useState } from 'react';
 import MyEventsGrid from './MyEventsGrid';
 import NavBar from '../../Nav/NavBar';
 import Footer from '../../Nav/Footer';
+import empty from '../../resources/empty.jpeg';
+
 export default function MyEvents() {
     const [events,setEvents] = useState([]);
 
@@ -26,7 +28,22 @@ export default function MyEvents() {
   return (
     <div>
       <NavBar />
-       <MyEventsGrid events={events} setEvents={setEvents}/>
+      <h2> My Registrations</h2>
+      <br />
+      <br />
+
+      {
+        events.length !==0 ? <MyEventsGrid events={events} setEvents={setEvents}/>
+        :
+        <img src={empty} style={{ borderRadius: '30%', border: '2px solid yellow',width: '300px', height: "300px"}} alt="empty"/>
+
+      }
+      <br />
+      <br/>
+      <br />
+      <br />
+      <br />
+
        <Footer />
     </div>
   )
