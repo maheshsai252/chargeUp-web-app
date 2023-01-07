@@ -13,7 +13,8 @@ import axios from 'axios';
 export default function EventOrganiserInfo({event}) {
     const style = {
         display: 'inline-block',
-        margin : '15px'
+        margin : '15px',
+        color: "white"
     }
     useEffect(()=> {
         
@@ -24,6 +25,7 @@ export default function EventOrganiserInfo({event}) {
             console.log( response,"gotten user")
             if(response.status===200) {
                setUser(response.data[0].name);
+            //    console.log("user gotten", user)
             } 
         }
     
@@ -38,7 +40,7 @@ const [user,setUser] = useState("");
             
             <div className="col">
                 <img src={userImg} className="icon" alt="" />
-                <h6 style={style}>Mahesh</h6>
+                <h6 style={style}>{user}</h6>
             </div>
             {/* <div className="divider"/> */}
             <div className="col">

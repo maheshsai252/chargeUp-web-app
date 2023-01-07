@@ -1,3 +1,4 @@
+
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
@@ -5,7 +6,7 @@ const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     auth: {
         user: 'maheshsai252@gmail.com',
-        pass: 'dgancgjrnksxwmxw',
+        pass: process.env.REACT_APP_GOOGLE_KEY,
     },
     secure: true, // upgrades later with STARTTLS -- change this based on the PORT
 });
