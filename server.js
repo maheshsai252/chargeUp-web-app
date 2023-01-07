@@ -3,6 +3,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require('path');
 const app = express();
+require('dotenv').config()
+
 // creating 24 hours from milliseconds
 const oneDay = 1000 * 60 * 60 * 24;
 const sessions = require('express-session');
