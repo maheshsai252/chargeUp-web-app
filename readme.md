@@ -46,5 +46,4 @@ https://stackoverflow.com/questions/16512592/login-credentials-not-working-with-
 ![Tech](/screenshots/enu.png)
 ![Tech](/screenshots/pairing.png)
 ![Tech](/screenshots/search.png)
-![Tech](/screenshots/pc.png)
 
