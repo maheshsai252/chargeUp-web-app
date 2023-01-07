@@ -56,7 +56,7 @@ const db = require("./models");
 const Role = db.role;
 // mongodb://localhost:27017/db8
 db.mongoose
-  .connect('mongodb+srv://mahesh:bandaru21@buddy.vq6xz.mongodb.net/?retryWrites=true&w=majority', {
+  .connect(process.env.REACT_APP_MONGOURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
